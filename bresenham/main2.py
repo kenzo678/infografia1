@@ -1,5 +1,5 @@
 import arcade
-from bresenham import get_line
+from bersen2 import get_line
 
 # definicion de constantes
 SCREEN_WIDTH = 800
@@ -17,10 +17,14 @@ class BresenhamWindow(arcade.Window):
     def on_draw(self):
         arcade.start_render()
 
-        points = get_line(30, 15, 5, 5)
+        #poins = [30, 15, 5, 5] #va hacia atras. (45 deg)
+        #poins = [2, 18, 11, 10] #va hacia abajo. (45 deg)
+        poins = [0, 3, 4, 8] #positive, big slopw
+
+        points = get_line(poins[0], poins[1], poins[2], poins[3])
         self.draw_grid()
         self.draw_line_points(points, arcade.color.AZURE_MIST)
-        self.draw_scaled_line(30, 15, 5, 5)
+        self.draw_scaled_line(poins[0], poins[1], poins[2], poins[3])
 
     def draw_grid(self):
         # lineas verticales
